@@ -1,71 +1,83 @@
 # status
-✅ Features
-One-line HTML form to enter:
+What it does
+This project is a simple web page that:
 
-Name
+Lets users enter their name and age
 
-Age
+Saves the data into a MySQL database
 
-Submits data using PHP and stores it in a MySQL database
+Shows all saved users in a table
 
-Displays all submitted records in an HTML table
+Allows toggling a status (0 or 1) for each user using a button
 
-Each record has a "Toggle" button to switch status between 0 and 1
+Updates the status instantly using JavaScript (AJAX)
 
-Toggle uses AJAX (JavaScript) for instant update without refreshing the page
+Everything is inside one file: index.php
 
-Everything is handled in one single index.php file
+Requirements
+You need:
 
-📦 Requirements
-PHP 7.0+
+A web server with PHP support (XAMPP, WAMP, or LAMP)
+
+PHP version 7.0 or higher
 
 MySQL or MariaDB
 
-Apache or compatible web server (e.g. XAMPP, WAMP, LAMP stack)
+Setup Instructions
+Create the database table
 
-🛠️ Setup Instructions
-1. Create the Database Table
-Run the following SQL in your MySQL database:
+Open your MySQL and run this:
 
 sql
-نسخ
-تحرير
+
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100) NOT NULL,
     age INT NOT NULL,
     status TINYINT(1) DEFAULT 0
 );
-2. Edit Database Credentials
-In the index.php file, update these lines with your database credentials:
+Edit database settings
+
+In the index.php file, update this section with your database info:
 
 php
-نسخ
-تحرير
+
 $host = 'localhost';
 $db   = 'your_database_name';
 $user = 'your_username';
 $pass = 'your_password';
-3. Deploy the File
-Place index.php in your server’s public folder (e.g., htdocs in XAMPP)
+Place the file on your server
 
-Open it in your browser: http://localhost/index.php
+Copy index.php to your server's root folder:
 
-🧪 Usage
-Fill in the Name and Age fields
+For XAMPP: htdocs/
 
-Click Submit to add a new record
+For WAMP: www/
 
-Below the form, view the full table of users
+For LAMP: /var/www/html/
 
-Click the "Toggle" button to switch the status between 0 and 1
+Open in browser
 
-The change is immediate and doesn’t reload the page
+Go to:
 
-📁 File Structure
-bash
-نسخ
-تحرير
-project-folder/
-└── index.php
-All HTML, CSS, JavaScript, and PHP logic are inside index.php
+arduino
+
+
+http://localhost/index.php
+How to use
+Enter name and age in the form
+
+Click Submit to save the user
+
+The user will appear in the table below
+
+Click the "Toggle" button to change the status between 0 and 1
+
+The status will update instantly without reloading the page
+
+Notes
+Uses PDO for database connection
+
+Basic input checks only (you can add validation and security later)
+
+For practice and small demo use onl

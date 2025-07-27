@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Form with Toggle</title>
+  <style>
+    body { font-family: Arial; margin: 30px; }
+    form input { margin-right: 10px; }
+    table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+    .toggle { cursor: pointer; padding: 5px 10px; background: #007bff; color: white; border: none; }
+  </style>
+</head>
+<body>
+
+<h2>User Entry Form</h2>
+<form id="userForm">
+  <input type="text" name="name" placeholder="Name" required>
+  <input type="number" name="age" placeholder="Age" required>
+  <button type="submit">Submit</button>
+</form>
+
+<h3>User Table</h3>
+<table id="userTable">
+  <thead>
+    <tr><th>ID</th><th>Name</th><th>Age</th><th>Status</th><th>Toggle</th></tr>
+  </thead>
+  <tbody>
+    <tr id="row-1">
+      <td>1</td>
+      <td>John</td>
+      <td>30</td>
+      <td class="status">0</td>
+      <td><button class="toggle" data-id="1">Toggle</button></td>
+    </tr>
+    <tr id="row-2">
+      <td>2</td>
+      <td>Jane</td>
+      <td>25</td>
+      <td class="status">1</td>
+      <td><button class="toggle" data-id="2">Toggle</button></td>
+    </tr>
+  </tbody>
+</table>
+
+<script>
+// Form Submit - Just clears and logs for now
+document.getElementById('userForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Submit clicked (no backend in HTML version)');
+});
+
+// Toggle buttons
+document.querySelectorAll('.toggle').forEach(button => {
+  button.addEventListener('click', function() {
+    const row = document.getElementById('row-' + this.dataset.id);
+    const statusCell = row.querySelector('.status');
+    const current = statusCell.textContent.trim();
+    statusCell.textContent = current === '1' ? '0' : '1';
+  });
+});
+</script>
+
+</body>
+</html>
